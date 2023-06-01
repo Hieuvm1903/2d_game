@@ -3,11 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 
-public class Player : MonoBehaviour
+public class Player : Character
 {
     [SerializeField] private Rigidbody2D rb;
     [SerializeField] private LayerMask groundLayer;
-    [SerializeField] private Animator animator;
     private float horrizontal;
     [SerializeField]  private float speed = 5;
     [SerializeField] private float jumpforce = 350;
@@ -15,14 +14,12 @@ public class Player : MonoBehaviour
     private bool isjping = false;
     private bool isatk = false;
     private int coin = 0;
-    private string curani;
     private bool isdeath;
     private Vector3 savepoint;
     // Start is called before the first frame update
     void Start()
     {
         savePoint();
-        Oninit();
     }
 
     // Update is called once per frame
@@ -39,7 +36,7 @@ public class Player : MonoBehaviour
            
             
             //verticle
-            if (Input.GetKeyDown(KeyCode.Space) && isgred)
+            if (Input.GetKeyDown(KeyCode.UpArrow) && isgred)
             {
                 Jump();
             }
@@ -121,20 +118,11 @@ public class Player : MonoBehaviour
         Changeanim("jump");
 
     }
-    private void Changeanim(string anime)
+
+
+    public override void Oninit()
     {
-        if (curani != anime)
-        {
-            animator.ResetTrigger(anime);
-            curani = anime;
-            animator.SetTrigger(curani);
-
-        }    
-
-
-    }
-    public void Oninit()
-    {
+        base.Oninit();
         isdeath = false;
         isatk = false;
         transform.position = savepoint;
