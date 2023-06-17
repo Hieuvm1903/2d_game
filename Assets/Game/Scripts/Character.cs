@@ -5,7 +5,7 @@ using UnityEngine;
 public class Character : MonoBehaviour
 {
     // Start is called before the first frame update
-    private float hp;
+    public float hp;
     protected string curani;
     [SerializeField] protected Animator animator;
     [SerializeField] protected healthbar healthbar;
@@ -24,7 +24,7 @@ public class Character : MonoBehaviour
         healthbar.Oninit(100,transform);
 
     }
-    protected void Changeanim(string anime)
+    public void Changeanim(string anime)
     {
         if (curani != anime)
         {
@@ -46,13 +46,15 @@ public class Character : MonoBehaviour
         if(!isdead)
         { 
             hp -= damage;
+            if (hp >= 100)
+                hp = 100;
             if (isdead)
             {
                 hp = 0;
                 Ondeath();
             }
             healthbar.sethp(hp);
-            Instantiate(cbtxt, transform.position + Vector3.up, Quaternion.identity).Oninit(damage);
+            Instantiate(cbtxt, transform.position + Vector3.up, Quaternion.identity).Oninit(Mathf.Abs(damage));
         }
 
 

@@ -140,7 +140,13 @@ public class moving : MonoBehaviour
     {
         if(collision.gameObject.tag == "Player" )
         {
-           // collision.transform.SetParent(transform);
+            if ( transform.position.y + (transform.lossyScale.y / 2) <=   collision.transform.position.y -( collision.transform.lossyScale.y / 2))
+            {
+               // collision.transform.SetParent(transform);
+                //Debug.Log("set");
+
+            }
+            
 
         }
     }

@@ -23,10 +23,12 @@ public class footscrpit : MonoBehaviour
     {
         if(collision.tag == "moving")
         {
-            
-            if( transform.position.y>collision.transform.position.y)
-            player.transform.SetParent(collision.transform);
-            //Debug.Log("stick");
+
+            if (transform.position.y > collision.transform.position.y)
+            {
+                player.transform.SetParent(collision.transform);
+                //Debug.Log("stick");
+            }
         }
     }
     private void OnTriggerExit2D(Collider2D collision)

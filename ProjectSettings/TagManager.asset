@@ -10,6 +10,7 @@ TagManager:
   - moving
   - enemy
   - ewall
+  - foot
   layers:
   - Default
   - TransparentFX
